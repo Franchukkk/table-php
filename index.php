@@ -17,14 +17,9 @@
             "БО-11" => ["Назар","Андрій","Олексій","Людмила",],
         ];
         if(isset($_POST["delete"])){
+            $nameKey = $_POST["nameKey"];
             $groupDelete = $_POST["groupDelete"];
-            $nameDelete = $_POST["nameDelete"];
-            $calc = count($chergovi["$groupDelete"]);
-            for($i = 0; $i <= $calc-1; $i++){ //підбираєм значення "i", перевіряєм позицію студента, якого потрібно видалити у масиві, та видаляємо його
-                if($nameDelete == $chergovi[$groupDelete][$i]){
-                    unset($chergovi[$groupDelete][$i]);
-                }
-            }
+            unset($chergovi[$groupDelete][$nameKey]);
         }
         else if(isset($_POST["add"])){// добавляєм імена із форми у таблицю
             $studentName = $_POST["studentName"];
@@ -40,7 +35,7 @@
         <tbody>
             <?php
                 foreach($chergovi as $group => $value){
-                    foreach($value as $name){ 
+                    foreach($value as $index => $name){ 
                         echo "<tr><td>$name</td><td>$group</td>";
                         for($i = 0; $i <= 4; $i++){ //перебір часу днів чергування кожної групи для графіку
                             if($group == "11-EY"){
@@ -51,7 +46,7 @@
                                 echo "<td>$groupBO11Weeks[$i]</td>";  
                             }
                         }
-                        echo "<form action='index.php' method='post'><input name='groupDelete' value='$group' type='hidden'><input name='nameDelete' value='$name' type='hidden'><td><button type='submit' name='delete'>-</button></td></form>";
+                        echo "<form action='index.php' method='post'><input name='nameKey' value='$index' type='hidden'><input name='groupDelete' value='$group' type='hidden'><td><button type='submit' name='delete'>-</button></td></form>";
                         echo "</tr>";
                     }
                 }
