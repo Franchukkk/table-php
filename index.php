@@ -7,32 +7,31 @@
     <title>Графік чергових</title>
 </head>
 <body>
-<?php
-    $groupPCB1107Weeks = ["18:00", "17:00", "16:00", "15:00", "14:00"];
-    $groupBO11Weeks = ["12:00", "11:00", "13:00", "18:00", "08:00"];
-    $group11EyWeeks = ["09:00", "10:00", "11:00", "12:00", "13:00"];
-    $chergovi = [
-        "11-EY" => ["Петро", "Діана", "Валентина",],
-        "ПЦБ-11-07" => ["Данііл", "Оксана", "Жанна",],
-        "БО-11" => ["Назар","Андрій","Олексій","Людмила",],
-    ];
-    if(isset($_POST["delete"])){
-        $groupDelete = $_POST["groupDelete"];
-        $nameDelete = $_POST["nameDelete"];
-        $name = "Петро";
-        $calc = count($chergovi["$groupDelete"]);
-        for($i = 0; $i <= $calc-1; $i++){ //підбираєм значення "i", перевіряєм позицію студента, якого потрібно видалити, та видаляємо його
-            if($nameDelete == $chergovi[$groupDelete][$i]){
-                unset($chergovi[$groupDelete][$i]);
+    <?php
+        $groupPCB1107Weeks = ["18:00", "17:00", "16:00", "15:00", "14:00"];
+        $groupBO11Weeks = ["12:00", "11:00", "13:00", "18:00", "08:00"];
+        $group11EyWeeks = ["09:00", "10:00", "11:00", "12:00", "13:00"];
+        $chergovi = [
+            "11-EY" => ["Петро", "Діана", "Валентина",],
+            "ПЦБ-11-07" => ["Данііл", "Оксана", "Жанна",],
+            "БО-11" => ["Назар","Андрій","Олексій","Людмила",],
+        ];
+        if(isset($_POST["delete"])){
+            $groupDelete = $_POST["groupDelete"];
+            $nameDelete = $_POST["nameDelete"];
+            $calc = count($chergovi["$groupDelete"]);
+            for($i = 0; $i <= $calc-1; $i++){ //підбираєм значення "i", перевіряєм позицію студента, якого потрібно видалити у масиві, та видаляємо його
+                if($nameDelete == $chergovi[$groupDelete][$i]){
+                    unset($chergovi[$groupDelete][$i]);
+                }
             }
         }
-    }
-    else if(isset($_POST["add"])){// добавляєм імена із форми у таблицю
-        $studentName = $_POST["studentName"];
-        $studentGroup = $_POST["studentGroup"];
-        $chergovi["$studentGroup"][] = $studentName;
-    }
-?>
+        else if(isset($_POST["add"])){// добавляєм імена із форми у таблицю
+            $studentName = $_POST["studentName"];
+            $studentGroup = $_POST["studentGroup"];
+            $chergovi["$studentGroup"][] = $studentName;
+        }
+    ?>
     <table>
         <thead>
             <tr><th rowspan="2">Ім'я</th><th rowspan="2">Група</th><th colspan="5">Графік</th></tr>
