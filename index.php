@@ -54,7 +54,7 @@
                                 echo "<td>$groupBO11Weeks[$i]</td>";  
                             }
                         }
-                        echo "<form action='index.php' method='post'><input name='nameKey' value='$index' type='hidden'><input name='groupDelete' value='$group' type='hidden'><td class='delete'><button type='submit' name='delete'>-</button></td></form>";
+                        echo "<form action='index.php' method='post'><input name='nameKey' value='$index' type='hidden'><input name='groupDelete' value='$group' type='hidden'><td><button class='delete' type='submit' name='delete'>-</button></td></form>";
                         echo "</tr>";
                     }
                 }
@@ -68,7 +68,7 @@
             <option value="ПЦБ-11-07">ПЦБ-11-07</option>
             <option value="БО-11">БО-11</option>
         </select>
-        <button type="submit" name="add">Додати у таблицю</button>
+        <button class="add" type="submit" name="add">+</button>
     </form>
 </body>
 </html>
