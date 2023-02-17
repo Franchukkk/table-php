@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Графік чергових</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <?php
@@ -36,7 +37,7 @@
     ?>
     <table>
         <thead>
-            <tr><th rowspan="2">Ім'я</th><th rowspan="2">Група</th><th colspan="5">Графік</th></tr>
+            <tr><th rowspan="2">Ім'я</th><th rowspan="2">Група</th><th class="th1" colspan="5">Графік</th></tr>
             <tr><th>понеділок</th><th>вівторок</th><th>середа</th><th>четвер</th><th>п'ятниця</th></tr>
         </thead>
         <tbody>
@@ -53,7 +54,7 @@
                                 echo "<td>$groupBO11Weeks[$i]</td>";  
                             }
                         }
-                        echo "<form action='index.php' method='post'><input name='nameKey' value='$index' type='hidden'><input name='groupDelete' value='$group' type='hidden'><td><button type='submit' name='delete'>-</button></td></form>";
+                        echo "<form action='index.php' method='post'><input name='nameKey' value='$index' type='hidden'><input name='groupDelete' value='$group' type='hidden'><td class='delete'><button type='submit' name='delete'>-</button></td></form>";
                         echo "</tr>";
                     }
                 }
