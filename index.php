@@ -8,23 +8,30 @@
 </head>
 <body>
     <?php
+        session_start();
         $groupPCB1107Weeks = ["18:00", "17:00", "16:00", "15:00", "14:00"];
         $groupBO11Weeks = ["12:00", "11:00", "13:00", "18:00", "08:00"];
         $group11EyWeeks = ["09:00", "10:00", "11:00", "12:00", "13:00"];
-        $chergovi = [
-            "11-EY" => ["Петро", "Діана", "Валентина",],
-            "ПЦБ-11-07" => ["Данііл", "Оксана", "Жанна",],
-            "БО-11" => ["Назар","Андрій","Олексій","Людмила",],
-        ];
+        if(isset($_SESSION)){
+            $chergovi = $_SESSION["chergovi"];
+        }else if(!isset($_SESSION)){
+            $chergovi = [
+                "11-EY" => ["Петро", "Діана", "Валентина",],
+                "ПЦБ-11-07" => ["Данііл", "Оксана", "Жанна",],
+                "БО-11" => ["Назар","Андрій","Олексій","Людмила",],
+            ];
+        }
         if(isset($_POST["delete"])){
             $nameKey = $_POST["nameKey"];
             $groupDelete = $_POST["groupDelete"];
             unset($chergovi[$groupDelete][$nameKey]);
+            $_SESSION["chergovi"] = $chergovi;
         }
         else if(isset($_POST["add"])){// добавляєм імена із форми у таблицю
             $studentName = $_POST["studentName"];
             $studentGroup = $_POST["studentGroup"];
             $chergovi["$studentGroup"][] = $studentName;
+            $_SESSION["chergovi"] = $chergovi;
         }
     ?>
     <table>
