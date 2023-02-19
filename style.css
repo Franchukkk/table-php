@@ -21,8 +21,8 @@ table>tbody>tr {
     background-color: #f2f2f2;
 }
 
-table>tbody>tr:nth-child(2n) {
-    background-color: rgb(232, 232, 232);
+table>tbody>tr:hover{
+    background-color: rgb(206, 206, 206);
 }
 
 .delete{
@@ -50,7 +50,7 @@ td,th{
     font-family: Arial, Helvetica, sans-serif;
 }
 
-tr>td:last-child{
+tr.chergovii>td:last-child{
     background-color: #fff;
     border: none;
     border-left: 1px solid grey;
@@ -67,6 +67,14 @@ td{
 
 table tr:last-child td{
     border-bottom: none;
+}
+
+.curator{
+    background-color: #8080806e;
+}
+
+.curator:hover{
+    background-color: #808080c7;
 }
 
 input{
@@ -86,7 +94,41 @@ select{
     margin-right: 5px;
 }
 
+.block{
+    display: block;
+}
+
 input:focus,
 select:focus{
     border: 1px solid #000;
+}
+
+.none {
+    display: none;
+}
+
+.showBTN{
+    position: relative;
+    border: none;
+    background-color: transparent;
+}
+
+.showBTN:after{
+    content: "show";
+    position: absolute;
+    margin-left: 2px;
+}
+
+.edit{
+    padding: 0;
+    max-width: 55px;
+    min-height: 18px;
+    font-size: 11px;
+}
+
+.send{
+    padding: 0;
+    max-width: 25px;
+    font-size: 12px;
+    margin-left: 3px;
 }
